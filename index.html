@@ -287,56 +287,57 @@
     
     <script>
         // AI工具数据
-        const aiTools = [
-            {
-                id: 1,
-                name: '通义千问',
-                description: '阿里巴巴推出的AI大语言模型，提供自然语言交互服务',
-                logo: 'https://gw.alicdn.com/imgextra/i1/O1CN01BPFGlS1nQxdKI2h7n_!!6000000005084-2-tps-200-200.png',
-                url: 'https://tongyi.aliyun.com/qianwen/?spm=5176.2810346&code=sw31xf0id8&utm_content=se_1017929191',
-                tags: ['大语言模型', '自然语言处理', '阿里巴巴']
-            },
-            {
-                id: 2,
-                name: '豆包',
-                description: '字节跳动旗下的AI助手，提供对话和创作服务',
-                logo: 'https://sf1-cdn-tos.douyinstatic.com/obj/eden-cn/nupohneh7nupehpqnulog/doubao/meta_doubao_favicon.png',
-                url: 'https://www.doubao.com/chat/?channel=baidu_pz&source=db_baidu_pz_01&keywordid=weizhi7',
-                tags: ['对话助手', '创作助手', '字节跳动']
-            },
-            {
-                id: 3,
-                name: '文心一言',
-                description: '百度推出的知识增强大语言模型，擅长中文创作和对话',
-                logo: 'https://nlp-eb.cdn.bcebos.com/ali/favicon.ico',
-                url: 'https://yiyan.baidu.com/',
-                tags: ['大语言模型', '创作助手', '百度']
-            },
-            {
-                id: 4,
-                name: 'ChatGLM',
-                description: '智谱AI开发的双语对话语言模型，开源可商用',
-                logo: 'https://chatglm.cn/favicon.ico',
-                url: 'https://chatglm.cn/',
-                tags: ['开源模型', '双语对话', '智谱AI']
-            },
-            {
-                id: 5,
-                name: '腾讯混元',
-                description: '腾讯推出的大语言模型，提供多领域智能对话服务',
-                logo: 'https://yuanbao.tencent.com/favicon.ico',
-                url: 'https://yuanbao.tencent.com/chat/naQivTmsDa',
-                tags: ['大语言模型', '多领域应用', '腾讯']
-            },
-            {
-                id: 6,
-                name: '元搜索',
-                description: '基于AI的搜索引擎，提供更智能的检索体验',
-                logo: 'https://metaso.cn/favicon.ico',
-                url: 'https://metaso.cn/',
-                tags: ['搜索引擎', 'AI检索', '智能搜索']
-            }
-        ];
+        // AI工具数据
+const aiTools = [
+    {
+        id: 1,
+        name: '通义千问',
+        description: '阿里巴巴推出的AI大语言模型，提供自然语言交互服务',
+        logo: './images/tongyi.png',  // 使用本地仓库中的图片
+        url: 'https://tongyi.aliyun.com/qianwen/?spm=5176.2810346&code=sw31xf0id8&utm_content=se_1017929191',
+        tags: ['大语言模型', '自然语言处理', '阿里巴巴']
+    },
+    {
+        id: 2,
+        name: '豆包',
+        description: '字节跳动旗下的AI助手，提供对话和创作服务',
+        logo: './images/doubao.png',  // 使用本地仓库中的图片
+        url: 'https://www.doubao.com/chat/?channel=baidu_pz&source=db_baidu_pz_01&keywordid=weizhi7',
+        tags: ['对话助手', '创作助手', '字节跳动']
+    },
+    {
+        id: 3,
+        name: '文心一言',
+        description: '百度推出的知识增强大语言模型，擅长中文创作和对话',
+        logo: './images/wenxin.png',  // 使用本地仓库中的图片
+        url: 'https://yiyan.baidu.com/',
+        tags: ['大语言模型', '创作助手', '百度']
+    },
+    {
+        id: 4,
+        name: 'ChatGLM',
+        description: '智谱AI开发的双语对话语言模型，开源可商用',
+        logo: './images/chatglm.png',  // 使用本地仓库中的图片
+        url: 'https://chatglm.cn/',
+        tags: ['开源模型', '双语对话', '智谱AI']
+    },
+    {
+        id: 5,
+        name: '腾讯混元',
+        description: '腾讯推出的大语言模型，提供多领域智能对话服务',
+        logo: './images/hunyuan.png',  // 使用本地仓库中的图片
+        url: 'https://yuanbao.tencent.com/chat/naQivTmsDa',
+        tags: ['大语言模型', '多领域应用', '腾讯']
+    },
+    {
+        id: 6,
+        name: '元搜索',
+        description: '基于AI的搜索引擎，提供更智能的检索体验',
+        logo: './images/metaso.png',  // 使用本地仓库中的图片
+        url: 'https://metaso.cn/',
+        tags: ['搜索引擎', 'AI检索', '智能搜索']
+    }
+];
         
         // 渲染工具卡片
         function renderTools(tools) {
