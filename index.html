@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI导航站 - 精选AI工具集</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* 布局样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid #e6e6e6;
+            padding: 16px 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .site-title {
+            display: flex;
+            align-items: center;
+        }
+        
+        .site-title h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+        
+        .site-title span {
+            margin-left: 12px;
+            font-size: 14px;
+            color: #86868b;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 240px;
+            padding: 10px 16px 10px 40px;
+            border-radius: 12px;
+            border: 1px solid #d2d2d7;
+            background-color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            border-color: #0071e3;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: #86868b;
+        }
+        
+        /* 主要内容区 */
+        main {
+            padding: 40px 0;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        
+        .tool-card {
+            background-color: #fff;
+            border-radius: 16px;
+            border: 1px solid #e6e6e6;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-content {
+            padding: 24px;
+            display: flex;
+        }
+        
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #f5f5f7;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .tool-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        
+        .tool-info {
+            flex: 1;
+        }
+        
+        .tool-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .tool-card:hover .tool-name {
+            color: #0071e3;
+        }
+        
+        .tool-description {
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tag {
+            font-size: 12px;
+            padding: 4px 8px;
+            background-color: #f0f7ff;
+            color: #0071e3;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #fff;
+            border-top: 1px solid #e6e6e6;
+            padding: 24px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #86868b;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-link {
+            font-size: 14px;
+            color: #86868b;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #1d1d1f;
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            
+            .search-box input {
+                width: 100%;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="site-title">
+                    <h1>AI导航站</h1>
+                    <span>精选AI工具集</span>
+                </div>
+                <div class="search-box">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="搜索AI工具..." id="search-input">
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主要内容 -->
+    <main>
+        <div class="container">
+            <div class="tools-grid" id="tools-container">
+                <!-- 工具卡片会通过JavaScript动态添加 -->
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2025 AI导航站 | 精选国内AI工具集合
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">关于我们</a>
+                    <a href="#" class="footer-link">联系方式</a>
+                    <a href="#" class="footer-link">提交工具</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // AI工具数据
+        const aiTools = [
+            {
+                id: 1,
+                name: '通义千问',
+                description: '阿里巴巴推出的AI大语言模型，提供自然语言交互服务',
+                logo: 'https://gw.alicdn.com/imgextra/i1/O1CN01BPFGlS1nQxdKI2h7n_!!6000000005084-2-tps-200-200.png',
+                url: 'https://tongyi.aliyun.com/qianwen/?spm=5176.2810346&code=sw31xf0id8&utm_content=se_1017929191',
+                tags: ['大语言模型', '自然语言处理', '阿里巴巴']
+            },
+            {
+                id: 2,
+                name: '豆包',
+                description: '字节跳动旗下的AI助手，提供对话和创作服务',
+                logo: 'https://sf1-cdn-tos.douyinstatic.com/obj/eden-cn/nupohneh7nupehpqnulog/doubao/meta_doubao_favicon.png',
+                url: 'https://www.doubao.com/chat/?channel=baidu_pz&source=db_baidu_pz_01&keywordid=weizhi7',
+                tags: ['对话助手', '创作助手', '字节跳动']
+            },
+            {
+                id: 3,
+                name: '文心一言',
+                description: '百度推出的知识增强大语言模型，擅长中文创作和对话',
+                logo: 'https://nlp-eb.cdn.bcebos.com/ali/favicon.ico',
+                url: 'https://yiyan.baidu.com/',
+                tags: ['大语言模型', '创作助手', '百度']
+            },
+            {
+                id: 4,
+                name: 'ChatGLM',
+                description: '智谱AI开发的双语对话语言模型，开源可商用',
+                logo: 'https://chatglm.cn/favicon.ico',
+                url: 'https://chatglm.cn/',
+                tags: ['开源模型', '双语对话', '智谱AI']
+            },
+            {
+                id: 5,
+                name: '腾讯混元',
+                description: '腾讯推出的大语言模型，提供多领域智能对话服务',
+                logo: 'https://yuanbao.tencent.com/favicon.ico',
+                url: 'https://yuanbao.tencent.com/chat/naQivTmsDa',
+                tags: ['大语言模型', '多领域应用', '腾讯']
+            },
+            {
+                id: 6,
+                name: '元搜索',
+                description: '基于AI的搜索引擎，提供更智能的检索体验',
+                logo: 'https://metaso.cn/favicon.ico',
+                url: 'https://metaso.cn/',
+                tags: ['搜索引擎', 'AI检索', '智能搜索']
+            }
+        ];
+        
+        // 渲染工具卡片
+        function renderTools(tools) {
+            const toolsContainer = document.getElementById('tools-container');
+            toolsContainer.innerHTML = '';
+            
+            tools.forEach(tool => {
+                const toolCard = document.createElement('a');
+                toolCard.href = tool.url;
+                toolCard.target = '_blank';
+                toolCard.rel = 'noopener noreferrer';
+                toolCard.className = 'tool-card';
+                
+                const tagsHTML = tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+                
+                toolCard.innerHTML = `
+                    <div class="card-content">
+                        <div class="tool-icon">
+                            <img src="/api/placeholder/32/32" alt="${tool.name} 图标">
+                        </div>
+                        <div class="tool-info">
+                            <h3 class="tool-name">${tool.name}</h3>
+                            <p class="tool-description">${tool.description}</p>
+                            <div class="tag-list">
+                                ${tagsHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                toolsContainer.appendChild(toolCard);
+            });
+        }
+        
+        // 初始渲染
+        renderTools(aiTools);
+        
+        // 搜索功能
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredTools = searchTerm
+                ? aiTools.filter(
+                    tool =>
+                        tool.name.toLowerCase().includes(searchTerm) ||
+                        tool.description.toLowerCase().includes(searchTerm) ||
+                        tool.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                )
+                : aiTools;
+                
+            renderTools(filteredTools);
+        });
+    </script>
+</body>
+</html>添加 AI 导航站首页
